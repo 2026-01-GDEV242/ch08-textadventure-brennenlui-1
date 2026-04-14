@@ -1,6 +1,7 @@
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 /**
  * Class Room - a room in an adventure game.
@@ -20,6 +21,7 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
+    private ArrayList<Item> items;
 
     /**
      * Create a room described "description". Initially, it has
@@ -31,6 +33,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        items = new ArrayList<>();
     }
 
     /**
@@ -60,7 +63,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "You are " + description + ".\n" + getItemString() + "\n" + getExitString();
     }
 
     /**
@@ -78,6 +81,56 @@ public class Room
         return returnString;
     }
 
+    /**
+     * Returns a string listing all the items in the room
+     * @return A string of items in the room
+     */
+    private String getItemString(){
+        if (items.isEmpty()){
+            return "Items: none";
+        }
+        String result = "Items:";
+        for (Item item : items){
+            result += "\n " + item.toString();
+        }
+        return result;
+    }
+    
+    /**
+     * Add an itme to this room
+     * @param item The itme to add to the room
+     */
+    public void addItem(Item item){
+        items.add(item);
+    }
+    
+    /**
+     * Remove an item from this room
+     * @return The remove item, otherwise null
+     */
+    public Item removeItem(String itemName){
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getName().equalsIgnoreCase(itemName)) {
+                return items.remove(i);
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Checks whether a item is in the room
+     * @param itemName The name of the item to look for
+     * @return true if the item is in the room, otherwise false
+     */
+    public boolean hasItem(String itemName){
+        for (Item item : items){
+            if (item.getName().equalsIgnoreCase(itemName)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * Return the room that is reached if we go from this room in direction
      * "direction". If there is no room in that direction, return null.

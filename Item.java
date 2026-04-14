@@ -45,4 +45,13 @@ public class Item
     public int getWeight(){
         return weight;
     }
+    
+    /**
+     * Return a formatted string of the item's name, description, and weight
+     * @return a formatted string of the item's name, description, and weight
+     */
+    @Override
+    public String toString(){
+        return name + " - " + description + " (" + weight + " kg)";
+    }
 }
