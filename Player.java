@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 /**
- * Write a description of class Player here.
+ * This class represents the player in the "World of Zuul" game.
+ * The player has a current room, an inventory of item, and a maxiumum carry weight
  *
  * @author Brennen Lui
  * @version 2026.04.13

@@ -1,9 +1,10 @@
 
 /**
- * Write a description of class Item here.
+ * This class represents an item in the "World of Zuul" game.
+ * Each item has a name, a description, and a weight
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Brennen Lui
+ * @version 2026.04.13
  */
 public class Item
 {
